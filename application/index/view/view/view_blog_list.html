@@ -1,0 +1,41 @@
+    {include file="common/head" /}
+
+    <body id="body" data-spy="scroll" data-target=".header">
+        
+       {include file="common/header_list" /}
+
+       {include file="common/slider" /}
+
+         <!--========== START VIEW ==========-->
+        <div id="view">
+            <div class="bg-color-sky-light" data-auto-height="true">
+                <div class="content-lg container ">
+                    <div class="row margin-b-40 ">
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                    <h2 class="text-center">keep active about life</h2>
+                    <div class="masonry-grid row">
+                        <div class="masonry-grid-sizer col-xs-6 col-sm-6 col-md-1"></div>
+                        {volist name="list" id="v" key="k"}
+                            <a class="nav-item-child nav-item-hover" href="/blog/{$v.id}">
+                                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-3 sm-margin-b-30 service">
+                                    <div class="margin-b-10 text-center">
+                                         <div class="service-element">
+                                            <i class="service-icon icon-notebook"></i>
+                                        </div>
+                                        <h3 class="js_nav-item nav-item">
+                                        {$v.title}</h3>
+                                        <p>{$v.create_time}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== END VIEW ==========-->
+       
+        {include file="common/footer" /}
+

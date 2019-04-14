@@ -1,0 +1,65 @@
+    {include file="common/head" /}
+    {include file="common/left" /}
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+       {include file="common/header" /}
+
+       <!--  <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>View Blog</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="{:url('View/viewBlogList')}">View-blog</a></li>
+                                    <li class="active"> detail</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="{:url('View/viewBlogList')}"><strong>View-code</strong></a> <span class="ti-angle-double-right"></span>detail
+                            </div>
+                            <div class="card-body card-block">
+                                <form id="update_view" action="{:url('View/viewBlogDetail')}" method="post" enctype="multipart/form-data" onsubmit="return false;" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" placeholder="Title" class="form-control" required="" value="{$list.title}"></div>
+                                    </div>
+                                    <!-- wangEditor -->
+                                        <div id="editor">
+                                            {$list.content}
+                                        </div>
+                                        <input type="hidden" name="id" value="{$list.id}">
+                                        <input type="hidden" name="content">
+                                    <!-- wangEditor -->
+                                    <input id="submit" class="btn btn-success col col-md-1" type="submit" value="Submit">
+                                </form>
+                                <div class="alert alert-primary" role="alert" style="visibility: hidden;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    <div class="clearfix"></div>
+</div>
+<!-- Scripts -->
+{include file="common/footer" /}

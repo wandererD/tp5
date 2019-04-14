@@ -1,0 +1,4 @@
+
+<---  此项目过程中笔记  --->
+
+1.使用paginate分页时需注意：若包含关联表，请处理好是left/right/inner join,分页结果会根据主表显示，否则会出错(common/Model/ViewCode/getListAjax)

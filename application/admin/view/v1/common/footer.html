@@ -1,0 +1,46 @@
+<!-- <footer class="site-footer">
+    <div class="footer-inner bg-white">
+        <div class="row">
+            <div class="col-sm-6">
+                Copyright &copy; 2018 Ela Admin. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+            </div>
+            <div class="col-sm-6 text-right"> Designed by Colorlib
+            </div>
+        </div>
+    </div>
+</footer> -->
+
+<script src="__ADMIN__assets/js/vendor/jquery-2.1.4.min.js"></script>
+<script src="__ADMIN__assets/js/popper.min.js"></script>
+<script src="__ADMIN__assets/js/bootstrap.min.js"></script>
+<script src="__ADMIN__assets/js/jquery.matchHeight.min.js"></script>
+<script src="__ADMIN__assets/js/main.js"></script>
+
+<script src="__COMMON__js/jquery.js"></script>
+<script src="__COMMON__js/common.js"></script>
+
+ <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="__COMMON__js/wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+  
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    
+    $("#add_view").submit(function() {
+        // var json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        // var jsonStr = JSON.stringify(json);
+        var content = editor.txt.html();
+        var content2 = editor.txt.text();
+        console.log(content);
+        console.log(content);
+        $('[name=content]').val(content);
+        formSubAjax($(this).attr('action'),$(this).serialize());
+        // return false;//阻止表单提交
+    });
+   
+    editor.create();
+</script>
+</body>
+</html>

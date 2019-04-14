@@ -1,0 +1,89 @@
+    {include file="common/head" /}
+
+    <body id="body" data-spy="scroll" data-target=".header">
+        <!--========== START HEADER ==========-->
+        <header class="header navbar-fixed-top">
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <div class="menu-container js_nav-item">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="toggle-icon"></span>
+                        </button>
+                        <div class="logo">
+                            <a class="logo-wrap" href="{:url('index/index')}">
+                            <!-- <a class="logo-wrap" href="#body"> -->
+                                <img class="logo-img logo-img-main" src="__WANDER__img/wander_logo-white.png" alt="Wanderd">
+                                <img class="logo-img logo-img-active" src="__WANDER__img/wander_logo-black.png" alt="Wanderd">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse nav-collapse">
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav navbar-nav-right">
+                               <!--  <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#body">Home</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#model">Model</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#view">View</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#controller">Controller</a></li>
+								<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#vender">Vender</a></li> -->
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="{:url('View/ViewCodeList')}#code">CodeList</a></li>
+                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#" onclick="javascript:history.back();">Back</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+		</header>
+        <!--========== END HEADER ==========-->
+
+         <!--========== START SLIDER ==========-->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox" style="height:97px;">
+                <div class="item active" >
+                    <img class="img-responsive" src="__WANDER__img/1920x1080/01.jpg" alt="Slider Image" >
+                    <div class="container">
+                        <div class="carousel-centered">
+                            <div class="margin-b-40">
+                                <h1 class="carousel-title">Keep calm to code</h1>
+                                <p class="color-white">Lorem ipsum dolor amet consectetur adipiscing dolore magna aliqua <br/> enim minim estudiat veniam siad venumus dolore</p>
+                            </div>
+                            <a href="#" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== END SLIDER ==========-->
+
+        <!--========== START VIEW ==========-->
+        <div id="view">
+            <div class="content-lg container">
+                <div class="row margin-b-0">
+                    <div class="col-sm-12">
+                        <h2>View </h2>
+                        <!-- <h3>Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a style="float:right;color: pink;" href="#">read more</a>
+                        </h3> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 sm-margin-b-50">
+                        <h4><a href="#">{$list.title}</a> <span class="text-uppercase margin-l-20">{$list.create_time}</span></h4>
+                        {$list.content}
+                           <!--  实例展示区 有需求可新开页面跳转 页面类似当前页面就行
+                            <div class="margin-b-20" style="float: left;">
+                                {volist name="list.imgs" id="v"}
+                                    <img style="max-height: 600px;" class="full-width img-responsive wow fadeInUp" src="__PUBLIC__{$v}" >
+                                {/volist}
+                                 <p>代码展示区</p>
+                                <img style="height: 200px;" class="img-responsive" src="__WANDER__img/970x647/01.jpg" alt="Latest Products Image">
+                            </div> -->
+                            <!-- <a class="link" href="#">Details</a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--========== END VIEW ==========-->
+
+        {include file="common/footer" /}

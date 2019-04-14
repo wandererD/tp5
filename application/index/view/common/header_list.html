@@ -1,0 +1,43 @@
+<header class="header navbar-fixed-top">
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="menu-container js_nav-item">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="toggle-icon"></span>
+                </button>
+                <div class="logo">
+                    <a class="logo-wrap" href="#body">
+                        <img class="logo-img logo-img-main"  src="__WANDER__img/wander_logo-white.png" alt="Wanderd">
+                        <img class="logo-img logo-img-active"  src="__WANDER__img/wander_logo-black.png" alt="Wanderd">
+                    </a>
+                </div>
+            </div>
+            {notempty name="view_code"}
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="nav navbar-nav navbar-nav-right">
+                            <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="/code">ALL</a></li>
+                            {volist name="typeList" id="v"}
+                                <li class="js_nav-item nav-item {if condition='$type == $v.id'} active {/if} "><a class="nav-item-child nav-item-hover" href="/codesearch/{$v.id}">{$v.type_name}</a></li>
+                            {/volist}
+                            
+                            <li class="keyword-search text-center">
+                                <input type="text" name="keyword" value="{$keyword}" autocomplete="off" placeholder="keyword">
+                                <button class="button-go" >GO</button>
+                            </li>
+                            <style type="text/css">
+                                .keyword-search{
+                                    margin: 30px;
+                                }
+                            </style>
+                        </ul>
+                    </div>
+                </div>
+            {/notempty}
+        </div>
+    </nav>
+</header>
+
+
+

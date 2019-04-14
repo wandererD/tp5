@@ -1,0 +1,92 @@
+    {include file="common/head" /}
+    {include file="common/left" /}
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+       {include file="common/header" /}
+
+       <!--  <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>View Blog</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="{:url('View/viewBlogList')}">View-blog</a></li>
+                                    <li class="active"> add</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a href="{:url('View/viewBlogList')}"><strong>View-code</strong></a> <span class="ti-angle-double-right"></span> new one
+                            </div>
+                            <div class="card-body card-block">
+                                <form id="add_view" action="{:url('View/viewBlogAdd')}" method="post" enctype="multipart/form-data" onsubmit="return false;" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="title" placeholder="Title" class="form-control" required=""></div>
+                                    </div>
+                                    <!-- wangEditor -->
+                                        <div id="editor">
+                                            <p></p>
+                                            <input type="hidden" name="content">
+                                        </div>
+                                    <!-- wangEditor -->
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"></div>
+                                        <div class="col col-md-9 show" >
+                                            <!-- <img class="card-img-top col col-md-3" src="https://i.imgur.com/ue0AB6J.png" alt="Card image cap"> -->
+                                        </div>
+                                    </div>
+                                    <input id="submit" class="btn btn-success col col-md-1" type="submit" value="Submit">
+                                </form>
+                                <div class="alert alert-primary" role="alert" style="visibility: hidden;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+    <div class="clearfix"></div>
+    {include file="common/left" /}
+</div>
+    {include file="common/footer"}
+<!-- Scripts -->
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="__COMMON__js/wangEditor.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+  
+    var editor = new E('#editor');
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    
+    $("#add_view").submit(function() {
+        // var json = editor.txt.getJSON();  // 获取 JSON 格式的内容
+        // var jsonStr = JSON.stringify(json);
+        var content = editor.txt.html();
+        var content2 = editor.txt.text();
+        $('[name=content]').val(content);
+        formSubAjax($(this).attr('action'),$(this).serialize());
+        // return false;//阻止表单提交
+    });
+   
+    editor.create();
+</script>

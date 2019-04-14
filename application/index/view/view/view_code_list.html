@@ -1,0 +1,125 @@
+    {include file="common/head"}
+
+    <body id="body" data-spy="scroll" data-target=".header">
+         
+
+        {include file="common/header_list" /}
+
+
+        {include file="common/slider" /}
+
+        <!--========== START VIEW ==========-->
+         <div id="view" page="2" lock="0">
+             <div class="bg-color-sky-light" data-auto-height="true">
+                <div class="content-lg container">
+                    <div class="row margin-b-40">
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                     <h2 class="text-center"> 
+                        keep calm and code
+                    </h2>
+                    <div class="row row-space-1 margin-b-2 show">
+                        {volist name="list" id="v" key="k"}
+                            <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+                                <div class="service" data-height="height">
+                                    <div class="service-element">
+                                        <i class="service-icon icon-notebook"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>{$v.title}</h3>
+                                        <p class="margin-b-5">{$v.type_name}</p>
+                                    </div>
+                                    <a href="code/{$v.id}" class="content-wrapper-link"></a>    
+                                </div>
+                            </div>
+                        {/volist}
+                    </div>
+                    <!-- 加载动画 -->
+                    <div class="spinner loading" style="display: none;">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                    <p class="text-center notice" style="display:none;margin-top: 18px;">no more ...</p>
+
+                </div>
+            </div>
+            </div>
+        </div>
+         
+        <!--========== END VIEW ==========-->
+
+        {include file="common/footer" /}
+
+        <script type="text/javascript">
+            $(function(){
+
+                /*下拉加载*/
+                $(window).scroll(function(){
+                    var height = $(document).height();           //当前页面窗口的总高度
+                    var windowHeight = $(this).height();         //当前可视的页面窗口高度
+                    var scrollHeight = $(this).scrollTop();      //滚动条距离顶部的高度，滚动的高度
+                    var lock = $('#view').attr('lock');
+
+                    var result = height - windowHeight - scrollHeight;//滚动距离小于页面总高度？尴尬
+                    // console.log(result);
+                    //监测 滚动到底部
+                    if(result < 5){
+                        //检查锁定状态
+                        var lock = $('#view').attr('lock');
+                        // console.log(lock);
+                        if(lock == 1){
+                            return false;
+                        }
+                        $('#view').attr('lock',1);
+
+                        var page = $('#view').attr('page');
+                        var type = '{$type}';
+                        var keyword = '{$keyword}';
+                        var ajax_url = '/codeajax/' + page + '/' + type + '/' + keyword;
+                        $('.loading').css('display','block');
+                        $.get(ajax_url,function(res){
+                            $('.loading').css('display','none');
+                            if(res.code == 200){
+                                var data = res.data.data;
+                                var len = data.length;
+                                var html = '';
+                                for( var i = 0; i < len; i++ ){
+                                    html += '<div class="col-xs-12 col-sm-6 col-md-3 sm-margin-b-2 text-center">';
+                                    html +=     '<div class="service" data-height="height" style="height: 231px;">';
+                                    html +=         '<div class="service-element">';
+                                    html +=             '<i class="service-icon icon-notebook"></i>';
+                                    html +=         '</div>';
+                                    html +=         '<div class="service-info">';
+                                    html +=             '<h3>'+ data[i].title +'</h3>';
+                                    html +=             '<p class="margin-b-5">'+ data[i].type_name +'</p>';
+                                    html +=         '</div>';
+                                    html +=         '<a href="/code/'+ data[i].id +'" class="content-wrapper-link"></a>';
+                                    html +=     '</div>';
+                                    html += '</div>';
+                                }
+                                $('.show').append(html);
+                                $('#view').attr('lock',0);
+                                $('#view').attr('page',res.next_page);
+                            }else{
+                                $('.notice').css('display','block').attr('text',res.msg);
+                            }
+                        },'json');
+                    }
+
+                    // console.log('滚动条距离顶部的高度:'+scrollTop);
+                    // console.log('当前页面的总高度:'+scrollHeight);
+                    // console.log('当前可视的页面高度:'+windowHeight);
+                });
+                
+
+                $('.button-go').click(function(){
+                    var keyword = $('[name=keyword]').val().trim();
+                    if(!keyword){
+                        return false;
+                    }
+                    window.location.href = '/codesearch/{$type}/' + keyword;
+                });
+            });
+        </script>

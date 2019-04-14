@@ -1,0 +1,66 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+{include file="common/head"}
+<body class="bg-dark">
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="__ADMIN__images/logo.png" alt="" style="visibility: hidden;">
+                    </a>
+                </div>
+                <div class="login-form">
+                    <form id="login" action="{:url('Login/checkLogin')}" onsubmit="return false">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required="" autocomplete="true">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                        </div>
+                        <div class="form-group">
+                            <label>captcha</label>
+                            <input type="text" name="captcha" class="form-control" placeholder="Captcha" required="">
+                            <div><img src="{:captcha_src()}" onclick="jsvascript:this.src='{:captcha_src()}'" alt="captcha" /></div>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" onclick="login()">Sign in</button>
+                        <div class="alert alert-primary" role="alert" style="visibility: hidden;">
+                            This is a primary alert—check it out!
+                        </div>
+                        <div class="social-login-content" style="display: none">
+                            <div class="social-button">
+                                <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
+                                <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign in with twitter</button>
+                            </div>
+                        </div>
+                        <div class="register-link m-t-15 text-center" style="display: none">
+                            <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__ADMIN__assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="__ADMIN__assets/js/popper.min.js"></script>
+    <script src="__ADMIN__assets/js/bootstrap.min.js"></script>
+    <script src="__ADMIN__assets/js/jquery.matchHeight.min.js"></script>
+    <script src="__ADMIN__assets/js/main.js"></script>
+
+    <script src="__COMMON__js/jquery.js"></script>
+    <script src="__ADMIN__js/login.js"></script>
+
+</body>
+</html>
